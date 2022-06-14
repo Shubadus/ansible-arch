@@ -1,0 +1,24 @@
+---
+# tasks file for configs
+- name: ensure git folder exists
+  file:
+    path: "{{ansible_env.HOME}}/git"
+    state: directory
+    mode: '0755'
+
+      # - name: download config files from github
+      #   git:
+      #     repo: git@github.com@Shubadus:dotfiles.git
+      #     dest: "{{user_dir}}/git/dotfiles"
+
+- name: lookup folders
+  find:
+    file_type: directory
+    paths: "{{ansible_env.HOME}}/git/dotfiles"
+  register: user_files
+
+- name: print var
+  debug:
+    var: user_files
+
+

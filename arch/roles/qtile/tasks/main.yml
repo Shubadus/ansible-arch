@@ -1,0 +1,65 @@
+---
+# tasks file for qtile
+- name: Install xorg-server
+  pacman:
+    name: xorg-server
+
+- name: Install additional xorg-packages
+  pacman:
+    name:
+      - autorandr
+      - arandr
+      - dmenu
+
+- name: Install additional network apps
+  pacman:
+    name:
+      - network-manager-applet
+
+- name: Install Background display apps
+  pacman:
+    name:
+      - feh
+      - variety
+
+- name: Install Wallpapers
+  pacman:
+    name:
+      - archlinux-wallpaper
+      - gnome-backgrounds
+
+- name: Install SDDM
+  pacman:
+    name: sddm
+
+- name: Enable SDDM.service in systemd
+  systemd:
+    name: sddm.service
+    enabled: true
+      #- name: Install sddm-editor-git
+      #pacman: ""
+
+- name: Install lxqt packages
+  pacman:
+    name:
+      - lxqt-admin
+      - lxqt-archiver
+      - lxqt-config
+      - lxqt-notificationd
+      - lxqt-policykit
+      - lxqt-powermanagement
+      - lxqt-qtplugin
+      - lxqt-session
+      - pcmanfm-qt
+      - pavucontrol-qt
+      - screengrab
+
+- name: Install qtile
+  pacman:
+    name: qtile
+
+- name: Install terminal
+  pacman:
+    name: alacritty
+
+#TODO: Set SDDM enabled in systemctl, pull configurations from github
